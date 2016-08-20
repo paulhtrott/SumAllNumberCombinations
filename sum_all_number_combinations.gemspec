@@ -7,10 +7,9 @@ Gem::Specification.new do |spec|
   spec.name          = "sum_all_number_combinations"
   spec.version       = SumAllNumberCombinations::VERSION
   spec.authors       = ["Paul Trott"]
-  spec.email         = ["paultrott78@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = %q{Add all combinations of numbers in a flattened array}
+  spec.description   = %q{Add all of the possible combinations of an array of numbers. The array is flattened before calculations are computed.}
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
