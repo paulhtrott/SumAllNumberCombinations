@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/paulhtrott/SumAllNumberCombinations.svg?branch=master)](https://travis-ci.org/paulhtrott/SumAllNumberCombinations)
+
 # SumAllNumberCombinations
 
 Sum all the numbers in a flattened array of numbers
