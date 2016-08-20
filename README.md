@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/paulhtrott/SumAllNumberCombinations.svg?branch=master)](https://travis-ci.org/paulhtrott/SumAllNumberCombinations)
-
+[![Build Status](https://travis-ci.org/paulhtrott/SumAllNumberCombinations.svg?branch=master)](https://travis-ci.org/paulhtrott/SumAllNumberCombinations)  [![Coverage Status](https://coveralls.io/repos/github/paulhtrott/SumAllNumberCombinations/badge.svg?branch=master)](https://coveralls.io/github/paulhtrott/SumAllNumberCombinations?branch=master)
 # SumAllNumberCombinations
 
 Sum all the numbers in a flattened array of numbers
