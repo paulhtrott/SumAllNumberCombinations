@@ -1,6 +1,6 @@
 # SumAllNumberCombinations
 
-Sum all the numbers in a flattend array of numbers
+Sum all the numbers in a flattened array of numbers
 
 ## Installation
 
