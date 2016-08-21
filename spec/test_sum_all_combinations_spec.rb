@@ -101,6 +101,18 @@ describe SumAllCombinations do
       nums.sum
       expect(nums.combinations_used).to eq([])
     end
+
+    it "should only calculate on numeric values" do
+      nums = SumAllCombinations.new(["paul", 1, 2, 3, "fred"])
+      nums.sum
+      expect(nums.calculated_values).to eq([3,4,5,6])
+    end
+
+    it "should calculate with string numeric values" do
+      nums = SumAllCombinations.new(["paul", "1.5", 2, 3, "fred"])
+      nums.sum
+      expect(nums.calculated_values).to eq([3.5,4.5,5,6.5])
+    end
   end
 
 end
