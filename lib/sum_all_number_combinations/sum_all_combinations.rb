@@ -1,47 +1,24 @@
 class SumAllCombinations
   attr_accessor :original
-  attr_reader :flattened
-  attr_reader :calculated_values
-  attr_reader :combinations_used 
+  attr_reader :flattened, :calculated_values, :combinations_used 
  
   def initialize(array_of_nums)
-    @original = array_of_nums if array_of_nums.respond_to?('each')
-    @flattened = @original.flatten unless @original.nil?
+    raise ArgumentError, "SumAllCombinations initializer param must be an Array" unless array_of_nums.is_a? Array
+    @original = array_of_nums 
+    @flattened = @original.flatten
   end
 
-  def original=(new_array)
-    @original = new_array if new_array.respond_to?('each')
-    @flattened = @original.flatten unless @original.nil?
-  end
-  
-  def sum(remove_duplicates=false, sort=true)
+  def sum(remove_duplicates: false, sort: true)
+    return if @flattened.nil? || @flattened.empty?
     @combinations_used = []
     @calculated_values = []
-    empty_array = []
-    clean_flattened_array() unless @flattened.nil?
-    calculate(empty_array, 0, 0) unless @flattened.nil?
+    @flattened = @flattened.map{ |i| i.to_f }.select{ |i| i != 0.0 }
+    calculate([], 0, 0) 
     @calculated_values.uniq! if remove_duplicates
     @calculated_values.sort! if sort
   end
   
   private
-  def clean_flattened_array()
-    @flattened.each do |i|
-      @flattened.delete(i) if (Float(i).nil? rescue true)
-    end
-    
-    new_array = []
-    
-    @flattened.each do |i|
-      if i.class == String
-        new_array.push(i.to_f)
-      else 
-        new_array.push(i)
-      end
-    end
-    
-    @flattened = new_array
-  end  
 
   def calculate(current, index, accumulation)
     (index...@flattened.length).each do |i|

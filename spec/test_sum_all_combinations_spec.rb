@@ -10,22 +10,16 @@ describe SumAllCombinations do
       expect(nums.original).to eq(['house', 'car', 1, 2])
     end
 
-    it "original array attribute should be nil if array not passed in" do
-      nums = SumAllCombinations.new('house')
-      expect(nums.original).to eq(nil)
-
-      nums = SumAllCombinations.new(1)
-      expect(nums.original).to eq(nil)
+    it "should raise error if string passed in" do
+      expect{ SumAllCombinations.new('house') }.to raise_error(ArgumentError, "SumAllCombinations initializer param must be an Array")
     end
-  end
+    
+    it "should raise error if nil passed in" do
+      expect{ SumAllCombinations.new(nil) }.to raise_error(ArgumentError, "SumAllCombinations initializer param must be an Array")
+    end
 
-  context "accessor of original array" do
-    it "original_array should equal value it is set to" do
-      nums = SumAllCombinations.new(nil)
-      expect(nums.original).to eq(nil)
-
-      nums.original = ['house', 'car', 'toad', 3, 4]
-      expect(nums.original).to eq(['house', 'car', 'toad', 3, 4])
+    it "should raise error if numeric passed in" do
+      expect{ SumAllCombinations.new(1) }.to raise_error(ArgumentError, "SumAllCombinations initializer param must be an Array")
     end
   end
 
@@ -34,10 +28,6 @@ describe SumAllCombinations do
       nums = SumAllCombinations.new([2,[3,4],5,[6,7,8,9,10]])
       expect(nums.original).to eq([2,[3,4],5,[6,7,8,9,10]])
       expect(nums.flattened).to eq([2,3,4,5,6,7,8,9,10])
-
-      nums.original = [11,[12,13,14], 15,16,17,[18,19]]
-      expect(nums.original).to eq([11,[12,13,14], 15,16,17,[18,19]])
-      expect(nums.flattened).to eq([11,12,13,14,15,16,17,18,19])
     end
   end
 
@@ -62,50 +52,38 @@ describe SumAllCombinations do
 
     it "should remove duplicates is true passed in for remove_duplicates" do
       nums = SumAllCombinations.new([1,2,3,4])
-      nums.sum(true)
+      nums.sum(remove_duplicates: true)
       expect(nums.calculated_values).to eq([3,4,5,6,7,8,9,10])
     end
    
     it "should not sort if sort set to false" do
       nums = SumAllCombinations.new([1,2,3,4])
-      nums.sum(true, false)
+      nums.sum(remove_duplicates: true, sort: false)
       expect(nums.calculated_values).to eq([10, 6, 7, 3, 8, 4, 5, 9])
     end
  
     it "should set combinations used" do 
       nums = SumAllCombinations.new([1,2,3])
       nums.sum
-      expect(nums.combinations_used).to eq(["1+2+3=6", "1+2=3", "1+3=4", "2+3=5"])
+      expect(nums.combinations_used).to eq(["1.0+2.0+3.0=6.0", "1.0+2.0=3.0", "1.0+3.0=4.0", "2.0+3.0=5.0"])
     end
 
-    it "should return empty array for combinations used if empty array is supplied" do
+    it "should return nil for combinations used if empty array is supplied" do
       nums = SumAllCombinations.new([])
       nums.sum
-      expect(nums.combinations_used).to eq([])
+      expect(nums.combinations_used).to eq(nil)
     end
 
     it "should return empty array for calculated value if empty array is supplied" do
       nums = SumAllCombinations.new([])
       nums.sum
-      expect(nums.calculated_values).to eq([])
-    end
-
-    it "should return empty array for calculated value if array is nil " do
-      nums = SumAllCombinations.new(nil)
-      nums.sum
-      expect(nums.calculated_values).to eq([])
-    end
-
-    it "should return empty array for combinations used if array is nill" do
-      nums = SumAllCombinations.new(nil)
-      nums.sum
-      expect(nums.combinations_used).to eq([])
+      expect(nums.calculated_values).to eq(nil)
     end
 
     it "should only calculate on numeric values" do
       nums = SumAllCombinations.new(["paul", 1, 2, 3, "fred"])
       nums.sum
-      expect(nums.calculated_values).to eq([3,4,5,6])
+      expect(nums.calculated_values).to eq([3.0,4.0,5.0,6.0])
     end
 
     it "should calculate with string numeric values" do
