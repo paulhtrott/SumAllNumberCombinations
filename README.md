@@ -45,7 +45,7 @@ The attributes available include:
 ```
 ## Example
 ```ruby
-sum_of_all = SumAllCombinations.new([1,2,3])
+sum_of_all = SumAllCombinations.new([1,2,[3,4], "house"])
 sum_of_all.original #=> [1, 2, [3, 4], "house"]
 sum_of_all.flattened #=> [1, 2, 3, 4, "house"]
 sum_of_all.sum #=> [3.0, 4.0, 5.0, 5.0, 6.0, 6.0, 7.0, 7.0, 8.0, 9.0, 10.0]
