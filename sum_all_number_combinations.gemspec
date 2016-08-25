@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "sum_all_number_combinations"
   spec.version       = SumAllNumberCombinations::VERSION
   spec.authors       = ["Paul Trott"]
-  spec.license       = ["MIT"]
+  spec.license       = 'MIT'
   spec.summary       = %q{Add all combinations of numbers in a flattened array}
   spec.description   = %q{Add all of the possible combinations of an array of numbers. The array is flattened before calculations are computed.}
   spec.homepage      = "https://github.com/paulhtrott/SumAllNumberCombinations"
