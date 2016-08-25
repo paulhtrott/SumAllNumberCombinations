@@ -21,7 +21,28 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Create your instance variable, passing in the array you would like to sum all the combinations of.
+```ruby
+sum_of_all = SumAllCombinations.new([1,2,3])
+```
+Call the sum method and pass in the optional keyword arguments of remove_duplicates (default is false) and sort (default is true)
+```ruby
+sum_of_all.sum(remove_duplicates: true, sort: false)
+```
+The attributes available include:
+```ruby
+# passed in array
+@original
+
+# flattened array. After sum is called flattened will only include the numbers used for calculation, non-numeric objects  will be removed
+@flattened
+
+# calculated values array, which is the array holding all the numbers calculated from the addition of all of the possible number combinations, after sum is called 
+@calculated_values
+
+#combinations used array, which is the array holding all the information of how the numbers were combined to determine results
+@combinations_used
+```
 
 ## Development
 
